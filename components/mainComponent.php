@@ -30,6 +30,14 @@ function uploadImage($image_tmp)
     }
 }
 
+function updateImage($image_tmp){
+    global $image, $image_tmp;
+    if(is_uploaded_file($image_tmp)){
+        $image=$_FILES['image']['name'];
+        
+    }
+}
+
 function getUser()
 {
     global $pdo;
@@ -49,9 +57,11 @@ function  editUser($id)
     $statement->execute();
     global $user;
     $user = $statement->fetch(PDO::FETCH_OBJ);
-
+    
 
 }
+
+
 
 
 

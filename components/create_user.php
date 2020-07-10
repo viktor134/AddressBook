@@ -1,6 +1,6 @@
 <?php
 
-//require "../config/config.php";
+
 require "../components/mainComponent.php";
 
 $username = $_POST['username'];
