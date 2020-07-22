@@ -3,7 +3,6 @@ include '../config/config.php';
 
 $id=$_POST['id'];
 $status_id=$_POST['status_id'];
-//var_dump($id,$status_id);
 $sql="UPDATE users SET status_id=? where id=? ";
 $statement=$pdo->prepare($sql);
 $statement->bindValue(1,$status_id);

@@ -35,16 +35,7 @@
                 <div class="border-faded bg-faded p-3 mb-g d-flex mt-3">
                     <input type="text" id="js-filter-contacts" name="filter-contacts" class="form-control shadow-inset-2 form-control-lg" placeholder="Filter contacts">
                    
-                    <script>
-                        $("#js-filter-contacts").on("input",function(){
-                            $search=$("#js-filter-contacts").val();
-                            if($search.length>0){
-                                $.get("search.php",{"js-filter-contacts":$search},function($data){
-                                    $("#result").html($data);
-                                })
-                            }
-                        })
-                    </script>
+
                   
                     <div class="btn-group btn-group-lg btn-group-toggle hidden-lg-down ml-3" data-toggle="buttons">
                         <label class="btn btn-default active">

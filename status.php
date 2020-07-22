@@ -2,8 +2,8 @@
 <?php
 $id=$_GET['id'];
 //var_dump($id);
-getStatus();
-editUser($id);
+$statuses=getStatus();
+$user=editUser($id);
 ?>
 
 <!DOCTYPE html>

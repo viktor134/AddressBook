@@ -1,7 +1,7 @@
 <? include "components/mainComponent.php" ?>
 <?
 $id=$_GET['id'];
-editUser($id);
+$user=editUser($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">

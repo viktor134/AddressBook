@@ -14,8 +14,7 @@ function getStatus()
     $sql = "SELECT * FROM status";
     $statement = $pdo->prepare($sql);
     $statement->execute();
-    global $statuses;
-    $statuses = $statement->fetchAll(PDO::FETCH_OBJ);
+    return $statement->fetchAll(PDO::FETCH_OBJ);
 
 }
 
