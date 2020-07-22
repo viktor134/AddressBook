@@ -55,9 +55,8 @@ function  editUser($id)
     $statement = $pdo->prepare($sql);
     $statement->bindValue(1,$id);
     $statement->execute();
-    global $user;
-    $user = $statement->fetch(PDO::FETCH_OBJ);
-    
+    return  $statement->fetch(PDO::FETCH_OBJ);
+
 
 }
 
