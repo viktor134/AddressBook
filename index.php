@@ -1,5 +1,5 @@
 <? require_once "components/mainComponent.php" ?>
-<?php getUser(); ?>
+<?php $users=getUsers(); ?>
 <!DOCTYPE html>
 <html lang="en">
 

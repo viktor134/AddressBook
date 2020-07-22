@@ -1,6 +1,6 @@
 <?php
 require_once "components/mainComponent.php";
-getStatus();
+$statuses=getStatus();
 ?>
 
 <!DOCTYPE html>

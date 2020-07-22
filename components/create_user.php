@@ -14,8 +14,7 @@ $social_vk = $_POST['social_vk'];
 $social_telegram = $_POST['social_telegram'];
 $social_instagram = $_POST['social_instagram'];
 $image_tmp=$_FILES['image']['tmp_name'];
-
-uploadImage($image_tmp);
+$image=uploadImage($image_tmp);
 
 
 

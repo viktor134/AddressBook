@@ -1,7 +1,7 @@
 <?php
 require_once 'components/mainComponent.php';
 $id=$_GET['id'];
-editUser($id);
+$user=editUser($id);
 
 ?>
 

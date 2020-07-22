@@ -21,7 +21,7 @@ function getStatus()
 function uploadImage($image_tmp)
 {
 
-    global $image;
+
     $image = $_FILES['image']['name'];
     if (is_uploaded_file($image_tmp)) {
         move_uploaded_file($image_tmp, "../public/uploads/" . $image);
@@ -29,32 +29,62 @@ function uploadImage($image_tmp)
     }
 }
 
-function updateImage($image_tmp){
+function updateImage($image_tmp)
+{
     global $image, $image_tmp;
-    if(is_uploaded_file($image_tmp)){
-        $image=$_FILES['image']['name'];
-        
+    if (is_uploaded_file($image_tmp)) {
+        $image = $_FILES['image']['name'];
+
     }
 }
 
-function getUser()
+function removeImage($user)
+{
+
+    if (is_file('../public/uploads/' . $user->image)) {
+        unlink('../public/uploads/' . $user->image);
+
+    }
+
+}
+
+function removeUsers($id)
+{
+    global $pdo;
+    $sql = "DELETE FROM users WHERE id=?";
+    $statement = $pdo->prepare($sql);
+    $statement->bindValue(1, $id);
+    $statement->execute();
+}
+
+function getUsers()
 {
     global $pdo;
     $sql = "SELECT * FROM users";
     $statemnt = $pdo->prepare($sql);
     $statemnt->execute();
-    global $users;
-    $users = $statemnt->fetchAll(PDO::FETCH_OBJ);
+    return $statemnt->fetchAll(PDO::FETCH_OBJ);
 
 }
-function  editUser($id)
+
+function getUser($id)
 {
     global $pdo;
     $sql = 'SELECT * FROM users where id=?';
     $statement = $pdo->prepare($sql);
-    $statement->bindValue(1,$id);
+    $statement->bindValue(1, $id);
     $statement->execute();
-    return  $statement->fetch(PDO::FETCH_OBJ);
+    return $statement->fetch(PDO::FETCH_OBJ);
+}
+
+function editUser($id)
+{
+    global $pdo;
+    $sql = 'SELECT * FROM users where id=?';
+    $statement = $pdo->prepare($sql);
+    $statement->bindValue(1, $id);
+    $statement->execute();
+    return $statement->fetch(PDO::FETCH_OBJ);
 
 
 }
