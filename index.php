@@ -15,7 +15,7 @@
     <link rel="stylesheet" media="screen, print" href="public/css/fa-solid.css">
     <link rel="stylesheet" media="screen, print" href="public/css/fa-brands.css">
     <link rel="stylesheet" media="screen, print" href="public/css/fa-regular.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 <body>
     <main id="js-page-content" role="main" class="page-content">
