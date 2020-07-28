@@ -53,7 +53,7 @@ $user=editUser($id);
                             <!-- password confirmation-->
                             <div class="form-group">
                                 <label class="form-label" for="simpleinput">Password Confirmation</label>
-                                <input type="password" id="simpleinput" class="form-control" name="confrim">
+                                <input type="password" id="simpleinput" class="form-control" name="confirm">
                             </div>
                               <input type="hidden" name="id" value="<?=$user->id?>">
                             

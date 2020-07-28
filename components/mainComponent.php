@@ -118,6 +118,38 @@ function editUser($id)
     return $statement->fetch(PDO::FETCH_OBJ);
 
 }
+function editSecurity($id,$email,$password,$confirm)
+{
+    global  $pdo;
+    if(!empty($email)){
+        $sql="UPDATE users SET email=? WHERE id=?";
+        $statement=$pdo->prepare($sql);
+        $statement->bindValue(1,$email);
+        $statement->bindValue(2,$id);
+        $statement->execute();
+
+    }
+    if(!empty($password && $confirm)){
+        if($password==$confirm){
+            $password=md5($password);
+            $sql="UPDATE users SET password=? WHERE id=?";
+            $statement=$pdo->prepare($sql);
+            $statement->bindValue(1,$password);
+            $statement->bindValue(2,$id);
+            $statement->execute();
+        }
+    }
+}
+
+function  editStatus($id,$status_id){
+    global  $pdo;
+    $sql="UPDATE users SET status_id=? where id=? ";
+    $statement=$pdo->prepare($sql);
+    $statement->bindValue(1,$status_id);
+    $statement->bindValue(2,$id);
+    $statement->execute();
+
+}
 
 
 
