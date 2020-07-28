@@ -19,25 +19,22 @@ function getStatus()
 
 }
 
-function uploadImage($image_tmp)
+function uploadImage($image_tmp, $image)
 {
-
-
-    $image = $_FILES['image']['name'];
     if (is_uploaded_file($image_tmp)) {
         move_uploaded_file($image_tmp, "../public/uploads/" . $image);
         return $image;
     }
 }
 
-function updateImage($image_tmp, $user)
+function updateImage($image_tmp, $user,$image)
 {
     //global $image, $image_tmp;
     if (is_uploaded_file($image_tmp)) {
         if (is_file('../public/uploads/' . $user->image)) {
             unlink('../public/uploads/' . $user->image);
         }
-        $image = $_FILES['image']['name'];
+
 
         move_uploaded_file($image_tmp, '../public/uploads/' . $image);
         return $image;
@@ -119,7 +116,6 @@ function editUser($id)
     $statement->bindValue(1, $id);
     $statement->execute();
     return $statement->fetch(PDO::FETCH_OBJ);
-
 
 }
 
