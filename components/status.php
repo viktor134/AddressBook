@@ -1,12 +1,11 @@
 <?php
 include '../config/config.php';
+include  '../components/mainComponent.php';
 
 $id=$_POST['id'];
+
 $status_id=$_POST['status_id'];
-$sql="UPDATE users SET status_id=? where id=? ";
-$statement=$pdo->prepare($sql);
-$statement->bindValue(1,$status_id);
-$statement->bindValue(2,$id);
-$statement->execute();
+
+editStatus($id,$status_id);
 
 header('Location:../index.php');
