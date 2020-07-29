@@ -18,67 +18,69 @@
 
 
 <body>
-    <main id="js-page-content" role="main" class="page-content">
-        <div class="subheader">
-            <h1 class="subheader-title">
-                <i class='subheader-icon fal fa-plus-circle'></i> Contacts
-                <small>
-                    A simple contact page
-                </small>
-            </h1>
+<main id="js-page-content" role="main" class="page-content">
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-plus-circle'></i> Contacts
+            <small>
+                A simple contact page
+            </small>
+        </h1>
 
-        </div>
-        <div class="row">
-            <div class="col-xl-12">
-                <a class="btn btn-success" href="create_user.php">Add User</a>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <a class="btn btn-success" href="create_user.php">Add User</a>
 
-                <div class="border-faded bg-faded p-3 mb-g d-flex mt-3">
-                    <input type="text" id="js-filter-contacts" name="filter-contacts" class="form-control shadow-inset-2 form-control-lg" placeholder="Filter contacts">
-                   
+            <div class="border-faded bg-faded p-3 mb-g d-flex mt-3">
+                <input type="text" id="js-filter-contacts" name="filter-contacts" class="form-control shadow-inset-2 form-control-lg" placeholder="Filter contacts">
 
-                  
-                    <div class="btn-group btn-group-lg btn-group-toggle hidden-lg-down ml-3" data-toggle="buttons">
-                        <label class="btn btn-default active">
-                            <input type="radio" name="contactview" id="grid" checked="" value="grid"><i class="fas fa-table"></i>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="radio" name="contactview" id="table" value="table"><i class="fas fa-th-list"></i>
-                        </label>
-                    </div>
-                  
+
+
+                <div class="btn-group btn-group-lg btn-group-toggle hidden-lg-down ml-3" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                        <input type="radio" name="contactview" id="grid" checked="" value="grid"><i class="fas fa-table"></i>
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="contactview" id="table" value="table"><i class="fas fa-th-list"></i>
+                    </label>
                 </div>
+
             </div>
         </div>
-        <div id="result"></div> <!--search div -->
+    </div>
 
-        <div class="row" id="js-contacts">
-            <?foreach ($users as $user):?>
+
+    <div class="row" id="js-contacts">
+        <?foreach ($users as $user):?>
 
             <div class="col-xl-4">
+
                 <div id="c_1" class="card border shadow-0 mb-g shadow-sm-hover" data-filter-tags="oliver kopyov">
                     <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
+
                         <div class="d-flex flex-row align-items-center">
 
 
                             <!--проверка статуса -->
 
                             <?if($user->status_id==1)
-                       echo '<span class="status status-success mr-3">';
-                       elseif($user->status_id==2)
-                       echo '<span class="status status-warning mr-3">';
-                       else
-                        echo '<span class="status status-danger mr-3">';
-                        ?>
-
+                                echo '<span class="status status-success mr-3">';
+                            elseif($user->status_id==2)
+                                echo '<span class="status status-warning mr-3">';
+                            else
+                                echo '<span class="status status-danger mr-3">';
+                            ?>
 
                             <?if($user->image==NULL):?>
-                            <span class="rounded-circle profile-image d-block" style="background-image:url('public/img/no-image.jpg'); background-size: cover;">
+
+                               <span class="rounded-circle profile-image d-block" style="background-image:url('public/img/no-image.jpg'); background-size: cover;">
                             </span>
-                            </span>
+                                </span>
                             <?else:?>
-                            <span class="rounded-circle profile-image d-block" style="background-image:url('public/uploads/<?= $user->image ?>'); background-size: cover;">
+                                <span class="rounded-circle profile-image d-block" style="background-image:url('public/uploads/<?= $user->image ?>'); background-size: cover;">
                             </span>
-                            </span>
+                                </span>
                             <?endif?>
 
 
@@ -119,6 +121,7 @@
                         </div>
                     </div>
 
+
                     <div class="card-body p-0 collapse show">
                         <div class="p-3">
                             <a href="tel:+13174562564" class="mt-1 d-block fs-sm fw-400 text-dark">
@@ -146,35 +149,42 @@
                 </div>
 
             </div>
-            <?endforeach;?>
-    </main>
+        <?endforeach;?>
+</main>
 
 
-    <script src="public/js/vendors.bundle.js"></script>
-    <script src="public/js/app.bundle.js"></script>
-    <script>
-        $(document).ready(function() {
 
-            $('input[type=radio][name=contactview]').change(function() {
-                if (this.value == 'grid') {
-                    $('#js-contacts .card').removeClassPrefix('mb-').addClass('mb-g');
-                    $('#js-contacts .col-xl-12').removeClassPrefix('col-xl-').addClass('col-xl-4');
-                    $('#js-contacts .js-expand-btn').addClass('d-none');
-                    $('#js-contacts .card-body + .card-body').addClass('show');
+<script src="public/js/vendors.bundle.js"></script>
+<script src="public/js/app.bundle.js"></script>
+<script>
 
-                } else if (this.value == 'table') {
-                    $('#js-contacts .card').removeClassPrefix('mb-').addClass('mb-1');
-                    $('#js-contacts .col-xl-4').removeClassPrefix('col-xl-').addClass('col-xl-12');
-                    $('#js-contacts .js-expand-btn').removeClass('d-none');
-                    $('#js-contacts .card-body + .card-body').removeClass('show');
-                }
+    $(document).ready(function()
+    {
 
-            });
+        $('input[type=radio][name=contactview]').change(function()
+        {
+            if (this.value == 'grid')
+            {
+                $('#js-contacts .card').removeClassPrefix('mb-').addClass('mb-g');
+                $('#js-contacts .col-xl-12').removeClassPrefix('col-xl-').addClass('col-xl-4');
+                $('#js-contacts .js-expand-btn').addClass('d-none');
+                $('#js-contacts .card-body + .card-body').addClass('show');
 
-            //initialize filter
-            initApp.listFilter($('#js-contacts'), $('#js-filter-contacts'));
+            }
+            else if (this.value == 'table')
+            {
+                $('#js-contacts .card').removeClassPrefix('mb-').addClass('mb-1');
+                $('#js-contacts .col-xl-4').removeClassPrefix('col-xl-').addClass('col-xl-12');
+                $('#js-contacts .js-expand-btn').removeClass('d-none');
+                $('#js-contacts .card-body + .card-body').removeClass('show');
+            }
+
         });
-    </script>
+
+        //initialize filter
+        initApp.listFilter($('#js-contacts'), $('#js-filter-contacts'));
+    });
+</script>
 </body>
 
 </html>
