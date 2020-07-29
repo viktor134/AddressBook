@@ -150,6 +150,14 @@ function  editStatus($id,$status_id){
     $statement->execute();
 
 }
+function updateMedia($id,$image){
+    global $pdo;
+    $sql = "UPDATE users SET image=? WHERE id=?";
+    $statement = $pdo->prepare($sql);
+    $statement->bindValue(1, $image);
+    $statement->bindValue(2, $id);
+    $statement->execute();
+}
 
 
 
