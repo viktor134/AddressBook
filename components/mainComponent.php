@@ -56,29 +56,79 @@ function createUser($username, $job_title, $phone_number, $address, $email,
                     $password, $status_id, $social_vk, $social_telegram, $social_instagram, $image)
 {
     global $pdo;
-    $sql = "INSERT INTO users(username,job_title,phone_number,
-address,email,password,status_id,social_vk,social_telegram,social_instagram,image)
-VALUES(:username,:job_title,:phone_number,
-:address,:email,:password,:status_id,:social_vk,:social_telegram,:social_instagram,:image)";
-    $statement = $pdo->prepare($sql);
-    $statement->execute([
-        'username' => $username,
-        'job_title' => $job_title,
-        'phone_number' => $phone_number,
-        'address' => $address,
-        'email' => $email,
-        'password' => md5($password),
-        'status_id' => $status_id,
-        'social_vk' => $social_vk,
-        'social_telegram' => $social_telegram,
-        'social_instagram' => $social_instagram,
-        'image' => $image,
+    if(!empty($username)){
+        $sql="INSERT INTO users  username=?";
+        $statement=$pdo->prepare($sql);
+        $statement->bindValue(1,$username);
+        $statement->execute();
 
+    }
+    if(!empty($job_title)){
+        $sql="INSERT INTO  users  job_title=?";
+        $statement=$pdo->prepare($sql);
+        $statement->bindValue(1,$job_title);
+        $statement->execute();
 
-    ]);
+    }
+    if(!empty($phone_number)){
+        $sql="INSERT INTO users  phone_number=?";
+        $statement=$pdo->prepare($sql);
+        $statement->bindValue(1,$phone_number);
+        $statement->execute();
+
+    }
+    if(!empty($address)){
+        $sql="INSERT INTO users  address=?";
+        $statement=$pdo->prepare($sql);
+        $statement->bindValue(1,$address);
+        $statement->execute();
+
+    }
+    if(!empty($email)){
+        $sql="INSERT INTO  users  email=?";
+        $statement=$pdo->prepare($sql);
+        $statement->bindValue(1,$email);
+        $statement->execute();
+
+    }
+    if(!empty($password)){
+        $sql="UPDATE users SET address=? WHERE id=?";
+        $statement=$pdo->prepare($sql);
+        $statement->bindValue(1,$address);
+        $statement->execute();
+}
+    if(!empty($status_id)) {
+        $sql = "UPDATE users SET address=? WHERE id=?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(1, $address);
+        $statement->execute();
+    }
+    if(!empty($social_vk)) {
+        $sql = "UPDATE users SET address=? WHERE id=?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(1, $address);
+        $statement->execute();
+    }
+    if(!empty($social_instagram)) {
+        $sql = "UPDATE users SET address=? WHERE id=?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(1, $address);
+        $statement->execute();
+    }
+    if(!empty($social_telegram)) {
+        $sql = "UPDATE users SET address=? WHERE id=?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(1, $address);
+        $statement->execute();
+    }
+    if(!empty($image)) {
+        $sql = "UPDATE users SET address=? WHERE id=?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(1, $address);
+        $statement->execute();
+    }
 
 }
-
 function removeUsers($id)
 {
     global $pdo;
