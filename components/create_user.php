@@ -17,9 +17,10 @@ $image_tmp = $_FILES['image']['tmp_name'];
 $image = $_FILES['image']['name'];
 $image=uploadImage($image_tmp,$image);
 
-
+//var_dump($username);
 createUser($username, $job_title, $phone_number, $address, $email,
     $password, $status_id, $social_vk, $social_telegram, $social_instagram, $image);
+
 
 
 header("Location:../index.php");
