@@ -52,96 +52,24 @@ function removeImage($user)
 
 }
 
-function createUser($username, $job_title, $phone_number, $address, $email,
-    $password, $status_id, $social_vk, $social_telegram, $social_instagram, $image)
+function createUser($email,$password)
+
 {
     global $pdo;
-    if (!empty($username)) {
-        $sql = "INSERT INTO users (username)  values (:username)";
+
+    if (!empty($email) and !empty($password)) {
+        $sql = "INSERT INTO  users(email,password)  values (:email,:password)";
         $statement = $pdo->prepare($sql);
         $statement->execute([
-            "username" => $username,
+            "email" => $email,
+            "password"=>md5($password)
         ]);
+               return $pdo->lastInsertId();
 
-    }
-
-
-    if(!empty($job_title)){
-        $sql="INSERT INTO  users(job_title)  VALUES (:job_title)";
-        $statement=$pdo->prepare($sql);
-        $statement->execute([
-            "job_title"=>$job_title
-        ]);
-
-    }
-    if(!empty($phone_number)){
-        $sql="INSERT INTO users(phone_number)  values (:phone_number)";
-        $statement=$pdo->prepare($sql);
-        $statement->execute([
-            "phone_number"=>$phone_number
-        ]);
-
-    }
-    if(!empty($address)){
-        $sql="INSERT INTO users(address)  values (:address)";
-        $statement=$pdo->prepare($sql);
-        $statement->execute([
-            "address"=>$address
-        ]);
-
-    }
-    if(!empty($email)){
-        $sql="INSERT INTO  users(email)  values (:email)";
-        $statement=$pdo->prepare($sql);
-        $statement->execute([
-            "email"=>$email
-        ]);
-
-    }
-    if(!empty($password)){
-        $sql="INSERT INTO users(password) values (:password)";
-        $statement=$pdo->prepare($sql);
-        $statement->execute([
-            "password"=>$password
-        ]);
-    }
-    if(!empty($status_id)) {
-        $sql = "INSERT INTO users(status_id) values(:status_id)";
-        $statement = $pdo->prepare($sql);
-        $statement->execute([
-            "status_id"=>$status_id
-        ]);
-    }
-    if(!empty($social_vk)) {
-        $sql = "INSERT INTO users(social_vk) values(:social_vk)";
-        $statement = $pdo->prepare($sql);
-        $statement->execute([
-            "social_vk"=>$social_vk
-        ]);
-    }
-    if(!empty($social_instagram)) {
-        $sql = "INSERT INTO users(social_instagram) values (:social_instagram) ";
-        $statement = $pdo->prepare($sql);
-        $statement->execute([
-            "social_instagram"=>$social_instagram
-        ]);
-    }
-    if(!empty($social_telegram)) {
-        $sql = "INSERT INTO  users(social_telegram)  values (:social_telegram)";
-        $statement = $pdo->prepare($sql);
-        $statement->execute([
-            "social_telegram"=>$social_telegram
-        ]);
-    }
-    if(!empty($image)) {
-        $sql = "INSERT INTO users(image) values(:image)";
-        $statement = $pdo->prepare($sql);
-        $statement->execute([
-            "image"=>$image
-        ]);
-    }
+        }
 
 }
+
 
 function removeUsers($id)
 {
@@ -256,6 +184,31 @@ function editInformation($id,$username,$job_title,$phone_number,$address)
         $statement->bindValue(2,$id);
         $statement->execute();
 
+    }
+}
+function updateSocialLink($social_instagram,$social_telegram,$social_vk,$id){
+    global  $pdo;
+    if(!empty($social_instagram)) {
+        $sql = "UPDATE  users SET  social_instagram=?  where id=?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(1,$social_instagram);
+        $statement->bindValue(2,$id);
+        $statement->execute();
+
+    }
+    if(!empty($social_telegram)) {
+        $sql = "UPDATE  users SET  social_telegram=?  where id=?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(1,$social_telegram);
+        $statement->bindValue(2,$id);
+        $statement->execute();
+    }
+    if(!empty($social_vk)) {
+        $sql = "UPDATE  users SET  social_vk=?  where id=?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(1,$social_vk);
+        $statement->bindValue(2,$id);
+        $statement->execute();
     }
 }
 

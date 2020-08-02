@@ -18,8 +18,11 @@ $image = $_FILES['image']['name'];
 $image=uploadImage($image_tmp,$image);
 
 //var_dump($username);
-createUser($username, $job_title, $phone_number, $address, $email,
-    $password, $status_id, $social_vk, $social_telegram, $social_instagram, $image);
+$id=createUser( $email ,$password);
+editInformation($id,$username,$job_title,$phone_number,$address);
+updateMedia($id,$image);
+editStatus($id,$status_id);
+updateSocialLink($social_instagram,$social_telegram,$social_vk,$id);
 
 
 
